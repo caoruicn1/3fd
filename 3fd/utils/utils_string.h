@@ -225,6 +225,12 @@ namespace utils
         {
         }
 
+        explicit CStringViewUtf8(const std::string& str) noexcept
+            : data(str.data())
+            , lenBytes(str.length())
+        {
+        }
+
         CStringViewUtf8(const char *beginIter, const char *endIter) noexcept
             : data(beginIter)
             , lenBytes(static_cast<uint32_t> (std::distance(beginIter, endIter)))
@@ -240,6 +246,11 @@ namespace utils
         {
             _ASSERTE(data != nullptr);
             return data[0] == 0;
+        }
+
+        constexpr bool null_or_empty() const noexcept
+        {
+            return null() || empty();
         }
 
         constexpr const char *begin() const noexcept
