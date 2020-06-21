@@ -224,6 +224,7 @@
     <ClCompile Include="tests_utils_pool.cpp" />
     <ClCompile Include="tests_utils_string.cpp" />
     <ClCompile Include="tests_xml.cpp" />
+    <ClCompile Include="tests_utils_cmdline.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

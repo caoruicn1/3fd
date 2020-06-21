@@ -6,8 +6,10 @@
 #include "pch.h"
 #include <3fd/utils/utils_string.h>
 
-namespace _3fd {
-namespace unit_tests {
+namespace _3fd
+{
+namespace unit_tests
+{
 
     /// <summary>
     /// Tests <see cref="utils::TextPlaceholderReplacementHelper::Replace"/>.
