@@ -224,7 +224,7 @@ namespace core
 
         void PrintArgsInfo() const;
 
-        bool Parse(int argCount, const char *arguments[]);
+        bool Parse(int argCount, char *arguments[]);
 
         bool GetArgSwitchOptionValue(uint16_t id) const;
         

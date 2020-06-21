@@ -19,6 +19,12 @@
 #include <string>
 #include <string_view>
 
+#ifdef _WIN32
+#   define strtok_x strtok_s
+#else
+#   define strtok_r strtok_r
+#endif
+
 namespace _3fd
 {
 namespace utils

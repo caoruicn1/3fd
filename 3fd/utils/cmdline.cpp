@@ -12,10 +12,6 @@
 #include <iomanip>
 #include <vector>
 
-#define SCANF_STRING_CAPTURE(SIZE) "%" #SIZE "s"
-#define SCANF_STRCAP_MAXLEN 400
-#define SCANF_OPTION_CAPTURE(SIGN, SEPARATOR) SIGN "%c" SEPARATOR SCANF_STRING_CAPTURE(400) "%n"
-
 namespace _3fd
 {
 namespace core
@@ -26,7 +22,7 @@ namespace core
     }
 
     static std::ostream &PrintShortDeclaration(const CommandLineArguments::ArgDeclaration &declaration,
-                                        std::ostream &out)
+                                               std::ostream &out)
     {
         out << '\'' << declaration.optName << "' (" << declaration.optChar << ')';
         return out;
@@ -1151,14 +1147,14 @@ namespace core
     /// <param name="ch">Receives the parsed character that labels the option.</param>
     /// <param name="value">Receives the parsed value (as string) for the option.</param>
     /// <returns>Whether the argument was successfully parsed.</returns>
-    static bool PreParseArgument(const char *argument,
+    static bool PreParseArgument(char *argument,
                                  CommandLineArguments::ArgOptionSign optionSign,
                                  CommandLineArguments::ArgValSeparator valSeparator,
                                  char &ch,
-                                 std::string &value)
+                                 const char **value)
     {
         ch = 0;
-        value.clear();
+        *value = nullptr;
 
         int count(0);
         const char *format(nullptr);
@@ -1173,25 +1169,26 @@ namespace core
         switch (valSeparator)
         {
             case CommandLineArguments::ArgValSeparator::Colon:
-                format = (optionSign == CommandLineArguments::ArgOptionSign::Dash
-                          ? SCANF_OPTION_CAPTURE("-", ":")
-                          : SCANF_OPTION_CAPTURE("/", ":"));
+                format = (optionSign == CommandLineArguments::ArgOptionSign::Dash ? "-%c:%*s%n" : "/%c:%*s%n");
                 break;
             case CommandLineArguments::ArgValSeparator::EqualSign:
-                format = (optionSign == CommandLineArguments::ArgOptionSign::Dash
-                          ? SCANF_OPTION_CAPTURE("-", "=")
-                          : SCANF_OPTION_CAPTURE("/", "="));
+                format = (optionSign == CommandLineArguments::ArgOptionSign::Dash ? "-%c=%*s%n" : "/%c=%*s%n");
                 break;
             default:
                 _ASSERTE(false); // unexpected separator char
                 return false;;
         }
 
-        char valueBuffer[SCANF_STRCAP_MAXLEN + 1];
-
-        if (sscanf(argument, format, &ch, valueBuffer, &count) > 0 && argument[count] == 0)
+        if (sscanf(argument, format, &ch, &count) > 0 && argument[count] == 0)
         {
-            value = std::string(valueBuffer);
+            char *ctx;
+            const char *token;
+            const char delimiter[2] = { static_cast<char>(valSeparator), '\0' };
+            token = strtok_x(argument, delimiter, &ctx);
+            _ASSERTE(token != nullptr);
+            token = strtok_x(nullptr, delimiter, &ctx);
+            _ASSERTE(token != nullptr);
+            *value = token;
             return true;
         }
 
@@ -1208,55 +1205,64 @@ namespace core
     /// <param name="label">Receives the parsed name label for the option.</param>
     /// <param name="value">Receives the parsed value (as string) for the option.</param>
     /// <returns>Whether the argument was successfully parsed.</returns>
-    static bool PreParseArgument(const char *argument,
+    static bool PreParseArgument(char *argument,
                                  CommandLineArguments::ArgOptionSign optionSign,
                                  CommandLineArguments::ArgValSeparator valSeparator,
-                                 std::string &label,
-                                 std::string &value)
+                                 const char **label,
+                                 const char **value)
     {
-        label.clear();
-        value.clear();
+        *label = nullptr;
+        *value = nullptr;
 
         int count(0);
-        char labelBuffer[SCANF_STRCAP_MAXLEN + 1];
+        int skip;
         const char *format(nullptr);
 
         if (valSeparator == CommandLineArguments::ArgValSeparator::Space)
         {
-            format = (optionSign == CommandLineArguments::ArgOptionSign::Dash ? "--%s%n" : "/%s%n");
-
-            if (sscanf(argument, format, labelBuffer, &count) >= 0 && argument[count] == 0)
+            if (optionSign == CommandLineArguments::ArgOptionSign::Dash)
             {
-                label = std::string(labelBuffer);
+                format = "--%s%n";
+                skip = 2;
+            }
+            else
+            {
+                format = "/%s%n";
+                skip = 1;
+            }
+
+            if (sscanf(argument, format, &count) == 0 && argument[count] == 0)
+            {
+                *value = argument + skip;
                 return true;
             }
 
             return false;
         }
 
-        switch (valSeparator)
+        switch (optionSign)
         {
-            case CommandLineArguments::ArgValSeparator::Colon:
-                format = (optionSign == CommandLineArguments::ArgOptionSign::Dash
-                          ? SCANF_OPTION_CAPTURE("--", ":")
-                          : SCANF_OPTION_CAPTURE("/", ":"));
+            case CommandLineArguments::ArgOptionSign::Dash:
+                format = (valSeparator == CommandLineArguments::ArgValSeparator::Colon ? "--%*s:%*s%n" : "--%*s=%*s%n");
+                skip = 2;
                 break;
-            case CommandLineArguments::ArgValSeparator::EqualSign:
-                format = (optionSign == CommandLineArguments::ArgOptionSign::Dash
-                          ? SCANF_OPTION_CAPTURE("--", "=")
-                          : SCANF_OPTION_CAPTURE("/", "="));
+            case CommandLineArguments::ArgOptionSign::Slash:
+                format = (valSeparator == CommandLineArguments::ArgValSeparator::Colon ? "/%*s:%*s%n" : "/%*s=%*s%n");
+                skip = 1;
                 break;
             default:
                 _ASSERTE(false); // unexpected separator char
                 return false;
         }
 
-        char valueBuffer[SCANF_STRCAP_MAXLEN + 1];
-
-        if (sscanf(argument, format, labelBuffer, valueBuffer, &count) > 0 && argument[count] == 0)
+        if (sscanf(argument, format, &count) == 0 && argument[count] == 0)
         {
-            label = std::string(labelBuffer);
-            value = std::string(valueBuffer);
+            char *ctx;
+            const char delimiter[2] = { static_cast<char>(valSeparator), '\0' };
+            *label = strtok_x(argument + skip, delimiter, &ctx);
+            _ASSERTE(*label != nullptr);
+            *value = strtok_x(nullptr, delimiter, &ctx);
+            _ASSERTE(*value != nullptr);
             return true;
         }
 
@@ -1271,7 +1277,7 @@ namespace core
     /// <returns>
     /// <see cref="STATUS_OKAY"/> whenever successful, otherwise, <see cref="STATUS_FAIL"/>.
     /// </returns>
-    bool CommandLineArguments::Parse(int argCount, const char *arguments[])
+    bool CommandLineArguments::Parse(int argCount, char *arguments[])
     {
         _ASSERTE(argCount > 0 && arguments != nullptr && arguments[argCount] == nullptr);
 
@@ -1292,15 +1298,14 @@ namespace core
             uint16_t idx(1);
             while (idx < argCount)
             {
-                const char *arg = arguments[idx];
-
+                char *arg = arguments[idx];
                 uint16_t argId;
-                string optValue;
-                string optName;
+                const char *optValue;
+                const char *optName;
                 char optChar;
 
                 // does the argument looks like an option with single char label?
-                if (PreParseArgument(arg, m_optionSign, m_argValSeparator, optChar, optValue))
+                if (PreParseArgument(arg, m_optionSign, m_argValSeparator, optChar, &optValue))
                 {
                     auto iter = m_argsByCharLabel.find(optChar);
                     if (m_argsByCharLabel.end() == iter)
@@ -1312,7 +1317,7 @@ namespace core
                     argId = iter->second;
                 }
                 // does the argument looks like an option with name label?
-                else if (PreParseArgument(arg, m_optionSign, m_argValSeparator, optName, optValue))
+                else if (PreParseArgument(arg, m_optionSign, m_argValSeparator, &optName, &optValue))
                 {
                     auto iter = m_argsByNameLabel.find(optName);
                     if (m_argsByNameLabel.end() == iter)
@@ -1372,7 +1377,7 @@ namespace core
                 case ArgType::OptionSwitch:
 
                     // switch-type option does not expect an accompanying value, but regex matched one:
-                    if (optValueInSameArg && !optValue.empty())
+                    if (optValueInSameArg && !isNullOrEmpty(optValue))
                     {
                         std::cerr << "Parser error - command line option does not expect an accompanying value: ";
                         PrintShortDeclaration(argDecl, std::cerr) << std::endl;
@@ -1387,7 +1392,7 @@ namespace core
                     /* accompanying value should have appeared in this arg, but it didn't
                        OR
                        accompanying value should appear in the next arg, but there is none */
-                    if ((optValueInSameArg && optValue.empty())
+                    if ((optValueInSameArg && isNullOrEmpty(optValue))
                         || (!optValueInSameArg && (arg = arguments[++idx]) == nullptr))
                     {
                         std::cerr << "Parser error  command line option requires an accompanying value, but none has been specified: ";

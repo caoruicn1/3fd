@@ -5,11 +5,46 @@
 //
 #include "pch.h"
 #include <3fd/utils/cmdline.h>
+#include <string>
 
 namespace _3fd
 {
 namespace unit_tests
 {
+    /// <summary>
+    /// Helps creating a list of writeable C-Style string out of read-only literals.
+    /// </summary>
+    class ListOfArguments
+    {
+    private:
+        
+        std::vector<std::string> m_strings;
+
+    public:
+
+        ListOfArguments(const std::vector<const char *> &readOnlyArgs)
+        {
+            m_strings.reserve(readOnlyArgs.size());
+            for (auto roarg : readOnlyArgs)
+            {
+                m_strings.push_back(std::string(roarg));
+            }
+        }
+
+        std::vector<char *> GetList()
+        {
+            std::vector<char *> list;
+            list.reserve(m_strings.size() + 1);
+            for (auto &arg : m_strings)
+            {
+                list.push_back(arg.data());
+            }
+            list.push_back(nullptr); // always at the end
+
+            return list;
+        }
+    }; // end of class ListOfArguments
+
     TEST(CommandLineParser, ColonAsValSeparator_OneParam_Number)
     {
         using _3fd::core::CommandLineArguments;
@@ -38,10 +73,11 @@ namespace unit_tests
                 float number;
             } expected, actual;
 
-            std::vector<const char *> args;
+            std::vector<char *> args;
         } test;
 
-        test.args = { "program.exe", "-n:0.5", nullptr };
+        ListOfArguments args({ "program.exe", "-n:0.5" });
+        test.args = args.GetList();
 
         test.expected.number = 0.5F;
 
@@ -88,10 +124,11 @@ namespace unit_tests
                 const char *chosenOption;
             } expected, actual;
 
-            std::vector<const char *> args;
+            std::vector<char *> args;
         } test;
 
-        test.args = { "program.exe", "-o:option1", nullptr };
+        ListOfArguments args({ "program.exe", "-o:option1" });
+        test.args = args.GetList();
 
         test.expected.chosenOption = "option1";
 
@@ -138,11 +175,11 @@ namespace unit_tests
                 std::vector<const char *> names;
             } expected, actual;
 
-            std::vector<const char *> args;
+            std::vector<char *> args;
         } test;
 
-        test.args = { "program.exe", "ping", "pong", nullptr };
-
+        ListOfArguments args({ "program.exe", "ping", "pong" });
+        test.args = args.GetList();
         test.expected.names = { "ping", "pong" };
 
         bool status = cmdLineArgs.Parse(test.args.size() - 1, test.args.data());
@@ -209,10 +246,11 @@ namespace unit_tests
                 std::vector<const char *> names;
             } expected, actual;
 
-            std::vector<const char *> args;
+            std::vector<char *> args;
         } test;
 
-        test.args = { "program.exe", "-o:option1", "-n:0.5", "ping", "pong", nullptr };
+        ListOfArguments args({ "program.exe", "-o:option1", "-n:0.5", "ping", "pong" });
+        test.args = args.GetList();
 
         test.expected.chosenOption = "option1";
         test.expected.number = 0.5F;
