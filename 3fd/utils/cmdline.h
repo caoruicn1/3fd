@@ -206,8 +206,8 @@ namespace core
     public:
 
         CommandLineArguments(uint8_t minCmdLineWidth,
-                             ArgValSeparator argValSeparator,
                              ArgOptionSign optionSign,
+                             ArgValSeparator argValSeparator,
                              bool optCaseSensitive);
 
         ~CommandLineArguments();

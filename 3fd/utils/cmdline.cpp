@@ -31,18 +31,17 @@ namespace core
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandLineArguments" /> class.
     /// </summary>
-    /// <param name="appName">Name of the application executable.</param>
     /// <param name="minCmdLineWidth">Minimum width of the command line. Anything less than 80 columns is ignored.</param>
-    /// <param name="argValSeparator">The character separator to use between option label and value.</param>
     /// <param name="optionSign">What to use for denoting an option.</param>
+    /// <param name="argValSeparator">The character separator to use between option label and value.</param>
     /// <param name="optCaseSensitive">if set to <c>true</c>, make case sensitive the parsing of single character labels for options.</param>
     CommandLineArguments::CommandLineArguments(uint8_t minCmdLineWidth,
-                                               ArgValSeparator argValSeparator,
                                                ArgOptionSign optionSign,
+                                               ArgValSeparator argValSeparator,
                                                bool optCaseSensitive)
         : m_minCmdLineWidth(minCmdLineWidth > 80 ? minCmdLineWidth : 80)
-        , m_argValSeparator(argValSeparator)
         , m_optionSign(optionSign)
+        , m_argValSeparator(argValSeparator)
         , m_isOptCaseSensitive(optCaseSensitive)
         , m_largestNameLabel(0)
         , m_idValueTypeArg(-1)

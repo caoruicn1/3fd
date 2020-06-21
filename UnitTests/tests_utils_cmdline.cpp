@@ -45,14 +45,27 @@ namespace unit_tests
         }
     }; // end of class ListOfArguments
 
-    TEST(CommandLineParser, ColonAsValSeparator_OneParam_Number)
-    {
-        using _3fd::core::CommandLineArguments;
+    using _3fd::core::CommandLineArguments;
 
-        CommandLineArguments cmdLineArgs(120,
-                                         CommandLineArguments::ArgValSeparator::Colon,
-                                         CommandLineArguments::ArgOptionSign::Dash,
-                                         false);
+    struct CommandLineParserTestParams
+    {
+        CommandLineArguments::ArgOptionSign optionSign;
+        CommandLineArguments::ArgValSeparator valueSeparator;
+        std::vector<const char *> args;
+    };
+
+    using Params = CommandLineParserTestParams;
+
+    class CommandLineParserTestWithParameters
+        : public ::testing::TestWithParam<Params> {};
+
+    using Parameterized = CommandLineParserTestWithParameters;
+
+    TEST_P(Parameterized, WithOneParamNumber)
+    {
+        auto params = GetParam();
+        CommandLineArguments cmdLineArgs(120, params.optionSign, params.valueSeparator, false);
+
         enum
         {
             ArgValFloatWithinRange
@@ -76,9 +89,8 @@ namespace unit_tests
             std::vector<char *> args;
         } test;
 
-        ListOfArguments args({ "program.exe", "-n:0.5" });
+        ListOfArguments args(params.args);
         test.args = args.GetList();
-
         test.expected.number = 0.5F;
 
         bool status = cmdLineArgs.Parse(test.args.size() - 1, test.args.data());
@@ -96,13 +108,30 @@ namespace unit_tests
         EXPECT_EQ(test.expected.number, test.actual.number);
     }
 
+    INSTANTIATE_TEST_CASE_P(CommandLineParserTest,
+                            Parameterized,
+                            ::testing::Values(
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "-n:0.5" } },
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "--number:0.5" } },
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "/n:0.5" } },
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "/number:0.5" } }
+                            ));
+
     TEST(CommandLineParser, ColonAsValSeparator_OneParam_EnumOptions)
     {
         using _3fd::core::CommandLineArguments;
 
         CommandLineArguments cmdLineArgs(120,
-                                         CommandLineArguments::ArgValSeparator::Colon,
                                          CommandLineArguments::ArgOptionSign::Dash,
+                                         CommandLineArguments::ArgValSeparator::Colon,
                                          false);
         enum
         {
@@ -152,8 +181,8 @@ namespace unit_tests
         using _3fd::core::CommandLineArguments;
 
         CommandLineArguments cmdLineArgs(120,
-                                         CommandLineArguments::ArgValSeparator::Colon,
                                          CommandLineArguments::ArgOptionSign::Dash,
+                                         CommandLineArguments::ArgValSeparator::Colon,
                                          false);
         enum
         {
@@ -203,8 +232,8 @@ namespace unit_tests
         using _3fd::core::CommandLineArguments;
 
         CommandLineArguments cmdLineArgs(120,
-                                         CommandLineArguments::ArgValSeparator::Colon,
                                          CommandLineArguments::ArgOptionSign::Dash,
+                                         CommandLineArguments::ArgValSeparator::Colon,
                                          false);
         enum
         {
