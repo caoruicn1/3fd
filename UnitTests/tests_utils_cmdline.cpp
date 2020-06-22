@@ -71,13 +71,16 @@ namespace unit_tests
             ArgValFloatWithinRange
         };
 
-        cmdLineArgs.AddExpectedArgument(CommandLineArguments::ArgDeclaration{
-            ArgValFloatWithinRange,
-            CommandLineArguments::ArgType::OptionWithReqValue,
-            CommandLineArguments::ArgValType::RangeFloat,
-            'n', "number",
-            "a floating point value from 0 to 1"
-        }, { 0.5, 0.0, 1.0 });
+        cmdLineArgs.AddExpectedArgument(
+            CommandLineArguments::ArgDeclaration{
+                ArgValFloatWithinRange,
+                CommandLineArguments::ArgType::OptionWithReqValue,
+                CommandLineArguments::ArgValType::RangeFloat,
+                'n', "number",
+                "a floating point value from 0 to 1"
+            },
+            { 0.5, 0.0, 1.0 }
+        );
 
         struct
         {

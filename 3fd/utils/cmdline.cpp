@@ -1221,12 +1221,12 @@ namespace core
         {
             if (optionSign == CommandLineArguments::ArgOptionSign::Dash)
             {
-                format = "--%s%n";
+                format = "--%*s%n";
                 skip = 2;
             }
             else
             {
-                format = "/%s%n";
+                format = "/%*s%n";
                 skip = 1;
             }
 
@@ -1242,11 +1242,11 @@ namespace core
         switch (optionSign)
         {
             case CommandLineArguments::ArgOptionSign::Dash:
-                format = (valSeparator == CommandLineArguments::ArgValSeparator::Colon ? "--%*s:%*s%n" : "--%*s=%*s%n");
+                format = (valSeparator == CommandLineArguments::ArgValSeparator::Colon ? "--%*[^:]:%*s%n" : "--%*[^=]=%*s%n");
                 skip = 2;
                 break;
             case CommandLineArguments::ArgOptionSign::Slash:
-                format = (valSeparator == CommandLineArguments::ArgValSeparator::Colon ? "/%*s:%*s%n" : "/%*s=%*s%n");
+                format = (valSeparator == CommandLineArguments::ArgValSeparator::Colon ? "/%*[^:]:%*s%n" : "/%*[^=]=%*s%n");
                 skip = 1;
                 break;
             default:
