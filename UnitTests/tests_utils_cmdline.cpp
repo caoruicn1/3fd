@@ -6,6 +6,7 @@
 #include "pch.h"
 #include <3fd/utils/cmdline.h>
 #include <string>
+#include <sstream>
 
 namespace _3fd
 {
@@ -20,15 +21,22 @@ namespace unit_tests
         
         std::vector<std::string> m_strings;
 
+        std::string m_line;
+
     public:
 
         ListOfArguments(const std::vector<const char *> &readOnlyArgs)
         {
+            std::ostringstream oss;
+
             m_strings.reserve(readOnlyArgs.size());
             for (auto roarg : readOnlyArgs)
             {
                 m_strings.push_back(std::string(roarg));
+                oss << roarg << ' ';
             }
+
+            m_line = oss.str();
         }
 
         std::vector<char *> GetList()
@@ -43,6 +51,12 @@ namespace unit_tests
 
             return list;
         }
+
+        const std::string &GetLine() const
+        {
+            return m_line;
+        }
+
     }; // end of class ListOfArguments
 
     using _3fd::core::CommandLineArguments;
@@ -52,6 +66,7 @@ namespace unit_tests
         CommandLineArguments::ArgOptionSign optionSign;
         CommandLineArguments::ArgValSeparator valueSeparator;
         std::vector<const char *> args;
+        bool caseSensitive;
     };
 
     using Params = CommandLineParserTestParams;
@@ -61,15 +76,18 @@ namespace unit_tests
 
     using Parameterized = CommandLineParserTestWithParameters;
 
+    /// <summary>
+    /// Tests parsing a single parameter which receives a numerical value.
+    /// </summary>
     TEST_P(Parameterized, WithOneParamNumber)
     {
         auto params = GetParam();
-        CommandLineArguments cmdLineArgs(120, params.optionSign, params.valueSeparator, false);
+        CommandLineArguments cmdLineArgs(120,
+                                         params.optionSign,
+                                         params.valueSeparator,
+                                         params.caseSensitive);
 
-        enum
-        {
-            ArgValFloatWithinRange
-        };
+        enum { ArgValFloatWithinRange };
 
         cmdLineArgs.AddExpectedArgument(
             CommandLineArguments::ArgDeclaration{
@@ -97,7 +115,8 @@ namespace unit_tests
         test.expected.number = 0.5F;
 
         bool status = cmdLineArgs.Parse(test.args.size() - 1, test.args.data());
-        EXPECT_TRUE(status == STATUS_OKAY);
+
+        EXPECT_TRUE(status == STATUS_OKAY) << args.GetLine();
         if (status == STATUS_FAIL)
         {
             std::cerr << "Expected usage:\n";
@@ -116,30 +135,64 @@ namespace unit_tests
                             ::testing::Values(
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::Colon,
-                                        { "program.exe", "-n:0.5" } },
+                                        { "program.exe", "-n:0.5" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "-n=0.5" }, true },
+
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::Colon,
-                                        { "program.exe", "--number:0.5" } },
+                                        { "program.exe", "-N:0.5" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "--number:0.5" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "--number=0.5" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "--Number:0.5" }, false },
+
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::Colon,
-                                        { "program.exe", "/n:0.5" } },
+                                        { "program.exe", "/n:0.5" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "/n=0.5" }, true },
+
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::Colon,
-                                        { "program.exe", "/number:0.5" } }
+                                        { "program.exe", "/N:0.5" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "/number:0.5" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "/number=0.5" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "/Number:0.5" }, false }
                             ));
 
+    /// <summary>
+    /// Tests parsing a single parameter which receives a value out of enumerated options.
+    /// </summary>
     TEST(CommandLineParser, ColonAsValSeparator_OneParam_EnumOptions)
     {
-        using _3fd::core::CommandLineArguments;
-
         CommandLineArguments cmdLineArgs(120,
                                          CommandLineArguments::ArgOptionSign::Dash,
                                          CommandLineArguments::ArgValSeparator::Colon,
                                          false);
-        enum
-        {
-            ArgValFromEnumStrOptions
-        };
+
+        enum { ArgValFromEnumStrOptions };
 
         cmdLineArgs.AddExpectedArgument(CommandLineArguments::ArgDeclaration{
             ArgValFromEnumStrOptions,
