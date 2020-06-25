@@ -155,7 +155,13 @@ namespace core
 
             // collides with another single char label?
             if (m_argsByCharLabel.end() == iter)
-                m_argsByCharLabel[argDecl.optChar] = argDecl.id;
+            {
+                char optChar = (m_isOptCaseSensitive
+                                ? argDecl.optChar
+                                : tolower(argDecl.optChar));
+
+                m_argsByCharLabel[optChar] = argDecl.id;
+            }
             else
             {
                 std::ostringstream oss;
@@ -175,7 +181,13 @@ namespace core
 
         // colides with another name label?
         if (m_argsByNameLabel.end() == iter)
-            m_argsByNameLabel[argDecl.optName] = argDecl.id;
+        {
+            std::string optName = (m_isOptCaseSensitive
+                                   ? std::string(argDecl.optName)
+                                   : utils::to_lower(argDecl.optName));
+
+            m_argsByNameLabel[optName] = argDecl.id;
+        }
         else
         {
             std::ostringstream oss;
@@ -1306,7 +1318,9 @@ namespace core
                 // does the argument looks like an option with single char label?
                 if (PreParseArgument(arg, m_optionSign, m_argValSeparator, optChar, &optValue))
                 {
-                    auto iter = m_argsByCharLabel.find(optChar);
+                    auto iter = m_argsByCharLabel.find(
+                        m_isOptCaseSensitive ? optChar : tolower(optChar)
+                    );
                     if (m_argsByCharLabel.end() == iter)
                     {
                         std::cerr << "Parser error: command line option '" << optChar << "' is unknown" << std::endl;
@@ -1318,7 +1332,9 @@ namespace core
                 // does the argument looks like an option with name label?
                 else if (PreParseArgument(arg, m_optionSign, m_argValSeparator, &optName, &optValue))
                 {
-                    auto iter = m_argsByNameLabel.find(optName);
+                    auto iter = m_argsByNameLabel.find(
+                        m_isOptCaseSensitive ? std::string(optName) : utils::to_lower(optName)
+                    );
                     if (m_argsByNameLabel.end() == iter)
                     {
                         std::cerr << "Parser error: command line option '" << optName << "' is unknown" << std::endl;

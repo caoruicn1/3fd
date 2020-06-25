@@ -29,6 +29,8 @@ namespace _3fd
 {
 namespace utils
 {
+    std::string to_lower(std::string str);
+    std::string to_upper(std::string str);
 
     ////////////////////////////////////////////////
     // Type Manipulation

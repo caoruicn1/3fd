@@ -12,6 +12,25 @@ namespace _3fd
 {
 namespace utils
 {
+    std::string to_lower(std::string str)
+    {
+        for (char &ch : str)
+        {
+            ch = tolower(ch);
+        }
+
+        return str;
+    }
+
+    std::string to_upper(std::string str)
+    {
+        for (char &ch : str)
+        {
+            ch = toupper(ch);
+        }
+
+        return str;
+    }
 
     ////////////////////////////////////////////////
     // Unicode Conversion
