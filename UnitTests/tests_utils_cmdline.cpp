@@ -71,15 +71,15 @@ namespace unit_tests
 
     using Params = CommandLineParserTestParams;
 
-    class CommandLineParserTestWithParameters
-        : public ::testing::TestWithParam<Params> {};
-
-    using Parameterized = CommandLineParserTestWithParameters;
+    class TestWithOneParamNumber
+        : public ::testing::TestWithParam<Params>
+    {
+    };
 
     /// <summary>
     /// Tests parsing a single parameter which receives a numerical value.
     /// </summary>
-    TEST_P(Parameterized, WithOneParamNumber)
+    TEST_P(TestWithOneParamNumber, Parameterized)
     {
         auto params = GetParam();
         CommandLineArguments cmdLineArgs(120,
@@ -130,8 +130,8 @@ namespace unit_tests
         EXPECT_EQ(test.expected.number, test.actual.number);
     }
 
-    INSTANTIATE_TEST_CASE_P(CommandLineParserTest,
-                            Parameterized,
+    INSTANTIATE_TEST_CASE_P(CommandLineParser,
+                            TestWithOneParamNumber,
                             ::testing::Values(
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::Colon,
@@ -182,15 +182,21 @@ namespace unit_tests
                                         { "program.exe", "/Number:0.5" }, false }
                             ));
 
+    class TestWithOneParamEnumOptions
+        : public ::testing::TestWithParam<Params>
+    {
+    };
+
     /// <summary>
     /// Tests parsing a single parameter which receives a value out of enumerated options.
     /// </summary>
-    TEST(CommandLineParser, ColonAsValSeparator_OneParam_EnumOptions)
+    TEST_P(TestWithOneParamEnumOptions, Parameterized)
     {
+        auto params = GetParam();
         CommandLineArguments cmdLineArgs(120,
-                                         CommandLineArguments::ArgOptionSign::Dash,
-                                         CommandLineArguments::ArgValSeparator::Colon,
-                                         false);
+                                         params.optionSign,
+                                         params.valueSeparator,
+                                         params.caseSensitive);
 
         enum { ArgValFromEnumStrOptions };
 
@@ -212,13 +218,13 @@ namespace unit_tests
             std::vector<char *> args;
         } test;
 
-        ListOfArguments args({ "program.exe", "-o:option1" });
+        ListOfArguments args(params.args);
         test.args = args.GetList();
-
         test.expected.chosenOption = "option1";
 
         bool status = cmdLineArgs.Parse(test.args.size() - 1, test.args.data());
-        EXPECT_TRUE(status == STATUS_OKAY);
+
+        EXPECT_TRUE(status == STATUS_OKAY) << args.GetLine();
         if (status == STATUS_FAIL)
         {
             std::cerr << "Expected usage:\n";
@@ -231,6 +237,58 @@ namespace unit_tests
         EXPECT_TRUE(isPresent);
         EXPECT_STREQ(test.expected.chosenOption, test.actual.chosenOption);
     }
+
+    INSTANTIATE_TEST_CASE_P(CommandLineParser,
+                            TestWithOneParamEnumOptions,
+                            ::testing::Values(
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "-o:option1" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "-o=option1" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "-O:option1" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "--option:option1" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "--option=option1" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "--Option:option1" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "/o:option1" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "/o=option1" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "/O=option1" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "/option:option1" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "/option=option1" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "/Option=option1" }, false }
+                            ));
 
     TEST(CommandLineParser, ColonAsValSeparator_List)
     {
