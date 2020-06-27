@@ -65,6 +65,7 @@ add_executable(UnitTests
     tests_gc_vertexstore.cpp
     tests_utils_algorithms.cpp
     tests_utils_cache.cpp
+    tests_utils_cmdline.cpp
     tests_utils_io.cpp
     tests_utils_lockfreequeue.cpp
     tests_utils_pool.cpp
