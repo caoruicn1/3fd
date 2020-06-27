@@ -322,19 +322,23 @@ namespace unit_tests
                                         { "program.exe", "/Option=option1" }, false }
                             ));
 
+    class TestWithListOfValues
+        : public ::testing::TestWithParam<Params>
+    {
+    };
+
     /// <summary>
     /// Tests parsing arguments that are a list of values.
     /// </summary>
-    TEST(CommandLineParser, ColonAsValSeparator_List)
+    TEST_P(TestWithListOfValues, Parameterized)
     {
+        auto params = GetParam();
         CommandLineArguments cmdLineArgs(120,
-                                         CommandLineArguments::ArgOptionSign::Dash,
-                                         CommandLineArguments::ArgValSeparator::Colon,
-                                         false);
-        enum
-        {
-            ArgValsListOfStrings
-        };
+                                         params.optionSign,
+                                         params.valueSeparator,
+                                         params.caseSensitive);
+
+        enum { ArgValsListOfStrings };
 
         cmdLineArgs.AddExpectedArgument(CommandLineArguments::ArgDeclaration{
             ArgValsListOfStrings,
@@ -354,12 +358,13 @@ namespace unit_tests
             std::vector<char *> args;
         } test;
 
-        ListOfArguments args({ "program.exe", "ping", "pong" });
+        ListOfArguments args(params.args);
         test.args = args.GetList();
         test.expected.names = { "ping", "pong" };
 
         bool status = cmdLineArgs.Parse(test.args.size() - 1, test.args.data());
-        EXPECT_TRUE(status == STATUS_OKAY);
+
+        EXPECT_TRUE(status == STATUS_OKAY) << args.GetLine();
         if (status == STATUS_FAIL)
         {
             std::cerr << "Expected usage:\n";
@@ -374,14 +379,50 @@ namespace unit_tests
             EXPECT_STREQ(test.expected.names[idx], test.actual.names[idx]);
     }
 
-    TEST(CommandLineParser, ColonAsValSeparator_CombinedUsage)
-    {
-        using _3fd::core::CommandLineArguments;
+    INSTANTIATE_TEST_CASE_P(CommandLineParser,
+                            TestWithListOfValues,
+                            ::testing::Values(
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "ping", "pong" }, true },
 
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "ping", "pong" }, false }
+                            ));
+
+    class TestWithSeveralArgumentTypes
+        : public ::testing::TestWithParam<Params>
+    {
+    };
+
+    /// <summary>
+    /// Tests parsing a combination of several types of arguments in the command line.
+    /// </summary>
+    TEST_P(TestWithSeveralArgumentTypes, Parameterized)
+    {
+        auto params = GetParam();
         CommandLineArguments cmdLineArgs(120,
-                                         CommandLineArguments::ArgOptionSign::Dash,
-                                         CommandLineArguments::ArgValSeparator::Colon,
-                                         false);
+                                         params.optionSign,
+                                         params.valueSeparator,
+                                         params.caseSensitive);
+
         enum
         {
             ArgValFromEnumStrOptions, ArgValFloatWithinRange, ArgValsListOfStrings
@@ -425,7 +466,7 @@ namespace unit_tests
             std::vector<char *> args;
         } test;
 
-        ListOfArguments args({ "program.exe", "-o:option1", "-n:0.5", "ping", "pong" });
+        ListOfArguments args(params.args);
         test.args = args.GetList();
 
         test.expected.chosenOption = "option1";
@@ -433,7 +474,8 @@ namespace unit_tests
         test.expected.names = { "ping", "pong" };
 
         bool status = cmdLineArgs.Parse(test.args.size() - 1, test.args.data());
-        EXPECT_TRUE(status == STATUS_OKAY);
+
+        EXPECT_TRUE(status == STATUS_OKAY) << args.GetLine();
         if (status == STATUS_FAIL)
         {
             std::cerr << "Expected usage:\n";
@@ -456,6 +498,107 @@ namespace unit_tests
         for (int idx = 0; idx < test.actual.names.size(); ++idx)
             EXPECT_STREQ(test.expected.names[idx], test.actual.names[idx]);
     }
+
+    INSTANTIATE_TEST_CASE_P(CommandLineParser,
+                            TestWithSeveralArgumentTypes,
+                            ::testing::Values(
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "-o:option1", "-n:0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "-O:option1", "-N:0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "-o=option1", "-n=0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "-O=option1", "-N=0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "-o", "option1", "-n", "0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "-O", "option1", "-N", "0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "--option:option1", "--number:0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "--Option:option1", "--Number:0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "--option=option1", "--number=0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "--Option=option1", "--Number=0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "--option", "option1", "--number", "0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "--Option", "option1", "--Number", "0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "/o:option1", "/n:0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "/O:option1", "/N:0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "/o=option1", "/n=0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "/O=option1", "/N=0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "/o", "option1", "/n", "0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "/O", "option1", "/N", "0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "/option:option1", "/number:0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Colon,
+                                        { "program.exe", "/Option:option1", "/Number:0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "/option=option1", "/number=0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::EqualSign,
+                                        { "program.exe", "/Option=option1", "/Number=0.5", "ping", "pong" }, false },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "/option", "option1", "/number", "0.5", "ping", "pong" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "/Option", "option1", "/Number", "0.5", "ping", "pong" }, false }
+
+                            ));
 
 } // end of namespace unit_tests
 } // end of namespace _3fd
