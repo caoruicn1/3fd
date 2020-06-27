@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "utils_winrt.h"
+#include "utils_string.h"
 
 #include <shcore.h>
 #include <wrl.h>
@@ -523,12 +524,13 @@ namespace utils
         strncpy(buffer.data(), winrt::to_string(ex.message()).data(), buffer.size());
         buffer[buffer.size() - 1] = '\0';
 
-        auto token = strtok(buffer.data(), "\r\n");
+        char *ctx;
+        auto token = strtok_x(buffer.data(), "\r\n", &ctx);
         while (true)
         {
             oss << token;
 
-            token = strtok(nullptr, "\r\n");
+            token = strtok_x(nullptr, "\r\n", &ctx);
             if (token != nullptr)
                 oss << " - ";
             else
