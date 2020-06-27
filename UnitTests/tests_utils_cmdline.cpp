@@ -142,6 +142,10 @@ namespace unit_tests
                                         { "program.exe", "-n=0.5" }, true },
 
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "-n", "0.5" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::Colon,
                                         { "program.exe", "-N:0.5" }, false },
 
@@ -152,6 +156,10 @@ namespace unit_tests
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::EqualSign,
                                         { "program.exe", "--number=0.5" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "--number", "0.5" }, true },
 
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::Colon,
@@ -166,6 +174,10 @@ namespace unit_tests
                                         { "program.exe", "/n=0.5" }, true },
 
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "/n", "0.5" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::Colon,
                                         { "program.exe", "/N:0.5" }, false },
 
@@ -176,6 +188,10 @@ namespace unit_tests
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::EqualSign,
                                         { "program.exe", "/number=0.5" }, true },
+
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "/number", "0.5" }, true },
 
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::Colon,
@@ -244,56 +260,73 @@ namespace unit_tests
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::Colon,
                                         { "program.exe", "-o:option1" }, true },
-
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::EqualSign,
                                         { "program.exe", "-o=option1" }, true },
-
+                                
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "-o", "option1" }, true },
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::Colon,
                                         { "program.exe", "-O:option1" }, false },
-
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::Colon,
                                         { "program.exe", "--option:option1" }, true },
-
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::EqualSign,
                                         { "program.exe", "--option=option1" }, true },
-
+                                
+                                Params{ CommandLineArguments::ArgOptionSign::Dash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "--option", "option1" }, true },
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Dash,
                                         CommandLineArguments::ArgValSeparator::Colon,
                                         { "program.exe", "--Option:option1" }, false },
-
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::Colon,
                                         { "program.exe", "/o:option1" }, true },
-
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::EqualSign,
                                         { "program.exe", "/o=option1" }, true },
-
+                                
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "/o", "option1" }, true },
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::EqualSign,
                                         { "program.exe", "/O=option1" }, false },
-
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::Colon,
                                         { "program.exe", "/option:option1" }, true },
-
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::EqualSign,
                                         { "program.exe", "/option=option1" }, true },
-
+                                
+                                Params{ CommandLineArguments::ArgOptionSign::Slash,
+                                        CommandLineArguments::ArgValSeparator::Space,
+                                        { "program.exe", "/option", "option1" }, true },
+                                
                                 Params{ CommandLineArguments::ArgOptionSign::Slash,
                                         CommandLineArguments::ArgValSeparator::EqualSign,
                                         { "program.exe", "/Option=option1" }, false }
                             ));
 
+    /// <summary>
+    /// Tests parsing arguments that are a list of values.
+    /// </summary>
     TEST(CommandLineParser, ColonAsValSeparator_List)
     {
-        using _3fd::core::CommandLineArguments;
-
         CommandLineArguments cmdLineArgs(120,
                                          CommandLineArguments::ArgOptionSign::Dash,
                                          CommandLineArguments::ArgValSeparator::Colon,

@@ -1244,7 +1244,7 @@ namespace core
 
             if (sscanf(argument, format, &count) == 0 && argument[count] == 0)
             {
-                *value = argument + skip;
+                *label = argument + skip;
                 return true;
             }
 
