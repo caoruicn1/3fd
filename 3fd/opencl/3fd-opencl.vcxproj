@@ -102,6 +102,10 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)\opencl.h $(SolutionDir)\install\include\3fd\opencl\
+copy $(ProjectDir)\CL\*.h $(SolutionDir)\install\include\3fd\opencl\CL\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -119,6 +123,10 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)\opencl.h $(SolutionDir)\install\include\3fd\opencl\
+copy $(ProjectDir)\CL\*.h $(SolutionDir)\install\include\3fd\opencl\CL\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -140,6 +148,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)\opencl.h $(SolutionDir)\install\include\3fd\opencl\
+copy $(ProjectDir)\CL\*.h $(SolutionDir)\install\include\3fd\opencl\CL\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -161,6 +173,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)\opencl.h $(SolutionDir)\install\include\3fd\opencl\
+copy $(ProjectDir)\CL\*.h $(SolutionDir)\install\include\3fd\opencl\CL\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="opencl.h" />

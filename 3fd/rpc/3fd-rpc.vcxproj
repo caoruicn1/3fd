@@ -105,6 +105,9 @@
     <Lib>
       <AdditionalDependencies>Rpcrt4.lib;Ntdsapi.lib;Secur32.lib;Crypt32.lib;</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)\rpc_helpers.h $(SolutionDir)\install\include\3fd\rpc\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -125,6 +128,9 @@
     <Lib>
       <AdditionalDependencies>Rpcrt4.lib;Ntdsapi.lib;Secur32.lib;Crypt32.lib;</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)\rpc_helpers.h $(SolutionDir)\install\include\3fd\rpc\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -149,6 +155,9 @@
     <Lib>
       <AdditionalDependencies>Rpcrt4.lib;Ntdsapi.lib;Secur32.lib;Crypt32.lib;</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)\rpc_helpers.h $(SolutionDir)\install\include\3fd\rpc\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -173,6 +182,9 @@
     <Lib>
       <AdditionalDependencies>Rpcrt4.lib;Ntdsapi.lib;Secur32.lib;Crypt32.lib;</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)\rpc_helpers.h $(SolutionDir)\install\include\3fd\rpc\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
