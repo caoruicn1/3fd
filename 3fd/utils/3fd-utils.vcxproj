@@ -135,7 +135,15 @@
       </AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\*.h $(SolutionDir)\install\include\3fd\utils\</Command>
+      <Command>copy $(ProjectDir)\cmdline.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\algorithms.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\concurrency.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\io.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\lockfreequeue.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\memory.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\string.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\winrt.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -159,7 +167,15 @@
       </AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\*.h $(SolutionDir)\install\include\3fd\utils\</Command>
+      <Command>copy $(ProjectDir)\cmdline.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\algorithms.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\concurrency.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\io.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\lockfreequeue.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\memory.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\string.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\winrt.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -187,7 +203,15 @@
       </AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\*.h $(SolutionDir)\install\include\3fd\utils\</Command>
+      <Command>copy $(ProjectDir)\cmdline.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\algorithms.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\concurrency.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\io.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\lockfreequeue.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\memory.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\string.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\winrt.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -215,7 +239,15 @@
       </AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\*.h $(SolutionDir)\install\include\3fd\utils\</Command>
+      <Command>copy $(ProjectDir)\cmdline.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\algorithms.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\concurrency.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\io.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\lockfreequeue.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\memory.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\string.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\winrt.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

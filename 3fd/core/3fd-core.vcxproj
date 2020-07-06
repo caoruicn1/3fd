@@ -111,7 +111,23 @@
       <AdditionalDependencies>runtimeobject.lib;</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\*.h $(SolutionDir)\install\include\3fd\core\
+      <Command>copy $(ProjectDir)\callstacktracer.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\configuration.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\dependencies.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\exceptions.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_addresseshashtable.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_arrayofedges.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_common.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_memaddress.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_memorydigraph.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_messages.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_vertex.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_vertexstore.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\logger.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\preprocessing.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\runtime.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\sptr.h $(SolutionDir)\install\include\3fd\core\
 copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\template.3fd.config</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -135,7 +151,23 @@ copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\te
       <AdditionalDependencies>runtimeobject.lib;</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\*.h $(SolutionDir)\install\include\3fd\core\
+      <Command>copy $(ProjectDir)\callstacktracer.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\configuration.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\dependencies.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\exceptions.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_addresseshashtable.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_arrayofedges.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_common.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_memaddress.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_memorydigraph.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_messages.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_vertex.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_vertexstore.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\logger.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\preprocessing.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\runtime.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\sptr.h $(SolutionDir)\install\include\3fd\core\
 copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\template.3fd.config</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -163,7 +195,23 @@ copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\te
       <AdditionalDependencies>runtimeobject.lib;</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\*.h $(SolutionDir)\install\include\3fd\core\
+      <Command>copy $(ProjectDir)\callstacktracer.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\configuration.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\dependencies.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\exceptions.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_addresseshashtable.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_arrayofedges.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_common.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_memaddress.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_memorydigraph.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_messages.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_vertex.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_vertexstore.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\logger.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\preprocessing.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\runtime.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\sptr.h $(SolutionDir)\install\include\3fd\core\
 copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\template.3fd.config</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -191,7 +239,23 @@ copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\te
       <AdditionalDependencies>runtimeobject.lib;</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\*.h $(SolutionDir)\install\include\3fd\core\
+      <Command>copy $(ProjectDir)\callstacktracer.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\configuration.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\dependencies.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\exceptions.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_addresseshashtable.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_arrayofedges.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_common.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_memaddress.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_memorydigraph.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_messages.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_vertex.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\gc_vertexstore.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\logger.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\preprocessing.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\runtime.h $(SolutionDir)\install\include\3fd\core\
+copy $(ProjectDir)\sptr.h $(SolutionDir)\install\include\3fd\core\
 copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\template.3fd.config</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
