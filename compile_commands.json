@@ -246,8 +246,8 @@
 },
 {
   "directory": "/home/faburaya/repos/3fd/UnitTests",
-  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -DTESTING -I/home/faburaya/repos/3fd/UnitTests -I/home/faburaya/repos/3fd/UnitTests/.. -I/home/faburaya/repos/3fd/UnitTests/../gtest/include   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/UnitTests.dir/tests_utils_io.cpp.o -c /home/faburaya/repos/3fd/UnitTests/tests_utils_io.cpp",
-  "file": "/home/faburaya/repos/3fd/UnitTests/tests_utils_io.cpp"
+  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -DTESTING -I/home/faburaya/repos/3fd/UnitTests -I/home/faburaya/repos/3fd/UnitTests/.. -I/home/faburaya/repos/3fd/UnitTests/../gtest/include   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/UnitTests.dir/tests_utils_serialization.cpp.o -c /home/faburaya/repos/3fd/UnitTests/tests_utils_serialization.cpp",
+  "file": "/home/faburaya/repos/3fd/UnitTests/tests_utils_serialization.cpp"
 },
 {
   "directory": "/home/faburaya/repos/3fd/UnitTests",
@@ -261,8 +261,8 @@
 },
 {
   "directory": "/home/faburaya/repos/3fd/UnitTests",
-  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -DTESTING -I/home/faburaya/repos/3fd/UnitTests -I/home/faburaya/repos/3fd/UnitTests/.. -I/home/faburaya/repos/3fd/UnitTests/../gtest/include   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/UnitTests.dir/tests_utils_string.cpp.o -c /home/faburaya/repos/3fd/UnitTests/tests_utils_string.cpp",
-  "file": "/home/faburaya/repos/3fd/UnitTests/tests_utils_string.cpp"
+  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -DTESTING -I/home/faburaya/repos/3fd/UnitTests -I/home/faburaya/repos/3fd/UnitTests/.. -I/home/faburaya/repos/3fd/UnitTests/../gtest/include   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/UnitTests.dir/tests_utils_text.cpp.o -c /home/faburaya/repos/3fd/UnitTests/tests_utils_text.cpp",
+  "file": "/home/faburaya/repos/3fd/UnitTests/tests_utils_text.cpp"
 },
 {
   "directory": "/home/faburaya/repos/3fd/UnitTests",
