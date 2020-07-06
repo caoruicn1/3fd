@@ -3,10 +3,10 @@
 // It is FREELY distributed by the author under the Microsoft Public License
 // and the observance that it should only be used for the benefit of mankind.
 //
-#ifndef UTILS_STRING_H // header guard
-#define UTILS_STRING_H
+#ifndef UTILS_STRINGS_H // header guard
+#define UTILS_STRINGS_H
 
-#include <3fd/utils/utils_io.h>
+#include <3fd/utils/io.h>
 
 #include <algorithm>
 #include <array>

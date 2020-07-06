@@ -26,24 +26,24 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="utils_asynchronous.cpp" />
-    <ClCompile Include="utils_dynmempool.cpp" />
-    <ClCompile Include="utils_event.cpp" />
-    <ClCompile Include="utils_io.cpp" />
-    <ClCompile Include="utils_memorypool.cpp" />
-    <ClCompile Include="utils_sharedmutex.cpp" />
-    <ClCompile Include="utils_string.cpp" />
+    <ClCompile Include="asynchronous.cpp" />
+    <ClCompile Include="dynmempool.cpp" />
+    <ClCompile Include="event.cpp" />
+    <ClCompile Include="io.cpp" />
+    <ClCompile Include="memorypool.cpp" />
+    <ClCompile Include="sharedmutex.cpp" />
+    <ClCompile Include="strings.cpp" />
     <ClCompile Include="xml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cmdline.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="utils_memory.h" />
-    <ClInclude Include="utils_algorithms.h" />
-    <ClInclude Include="utils_concurrency.h" />
-    <ClInclude Include="utils_io.h" />
-    <ClInclude Include="utils_lockfreequeue.h" />
-    <ClInclude Include="utils_string.h" />
+    <ClInclude Include="memory.h" />
+    <ClInclude Include="algorithms.h" />
+    <ClInclude Include="concurrency.h" />
+    <ClInclude Include="io.h" />
+    <ClInclude Include="lockfreequeue.h" />
+    <ClInclude Include="strings.h" />
     <ClInclude Include="xml.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -125,6 +125,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4018;4244;4267;4290;4482</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -157,6 +158,7 @@ copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\</Command>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4018;4244;4267;4290;4482</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -191,6 +193,7 @@ copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\</Command>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4018;4244;4267;4290;4482</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -227,6 +230,7 @@ copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\</Command>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4018;4244;4267;4290;4482</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -245,7 +249,7 @@ copy $(ProjectDir)\concurrency.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\io.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\lockfreequeue.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\memory.h $(SolutionDir)\install\include\3fd\utils\
-copy $(ProjectDir)\string.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\strings.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\winrt.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\</Command>
     </PostBuildEvent>

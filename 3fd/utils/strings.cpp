@@ -4,7 +4,7 @@
 // and the observance that it should only be used for the benefit of mankind.
 //
 #include "pch.h"
-#include "utils_string.h"
+#include "strings.h"
 #include <codecvt>
 #include <locale>
 

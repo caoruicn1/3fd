@@ -4,7 +4,7 @@
 // and the observance that it should only be used for the benefit of mankind.
 //
 #include "pch.h"
-#include <3fd/utils/utils_string.h>
+#include <3fd/utils/strings.h>
 
 namespace _3fd
 {

@@ -8,8 +8,8 @@
 #include <3fd/core/callstacktracer.h>
 #include <3fd/core/exceptions.h>
 #include <3fd/core/logger.h>
-#include <3fd/utils/utils_io.h>
-#include <3fd/utils/utils_string.h>
+#include <3fd/utils/io.h>
+#include <3fd/utils/strings.h>
 
 #include <sstream>
 

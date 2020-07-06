@@ -6,7 +6,7 @@
 #ifndef SQLITE_H // header guard
 #define SQLITE_H
 
-#include <3fd/utils/utils_lockfreequeue.h>
+#include <3fd/utils/lockfreequeue.h>
 
 #include <atomic>
 #include <map>

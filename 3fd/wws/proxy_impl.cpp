@@ -3,8 +3,8 @@
 #include <3fd/core/callstacktracer.h>
 #include <3fd/core/configuration.h>
 #include <3fd/core/logger.h>
-#include <3fd/utils/utils_io.h>
-#include <3fd/utils/utils_algorithms.h>
+#include <3fd/utils/io.h>
+#include <3fd/utils/algorithms.h>
 
 #define format utils::FormatArg
 
