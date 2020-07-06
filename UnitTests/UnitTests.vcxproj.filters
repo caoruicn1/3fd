@@ -47,9 +47,6 @@
     <ClCompile Include="..\TestShared\main.cpp">
       <Filter>Shared</Filter>
     </ClCompile>
-    <ClCompile Include="tests_utils_string.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="tests_utils_cache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tests_utils_serialization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tests_utils_text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
