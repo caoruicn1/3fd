@@ -5,7 +5,7 @@
 //
 #include "pch.h"
 #include "winrt.h"
-#include "strings.h"
+#include "text.h"
 
 #include <shcore.h>
 #include <wrl.h>

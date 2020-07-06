@@ -1,7 +1,7 @@
 #include "pch.h"
 #include <3fd/core/configuration.h>
 #include <3fd/core/exceptions.h>
-#include <3fd/utils/io.h>
+#include <3fd/utils/serialization.h>
 #include <3fd/utils/xml.h>
 
 #ifdef _3FD_PLATFORM_WINRT

@@ -5,7 +5,7 @@
 //
 #include "pch.h"
 #include "cmdline.h"
-#include "strings.h"
+#include "text.h"
 #include <algorithm>
 #include <cstdio>
 #include <iostream>

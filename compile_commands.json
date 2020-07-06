@@ -96,38 +96,38 @@
 },
 {
   "directory": "/home/faburaya/repos/3fd/3fd/utils",
+  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/asynchronous.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/asynchronous.cpp",
+  "file": "/home/faburaya/repos/3fd/3fd/utils/asynchronous.cpp"
+},
+{
+  "directory": "/home/faburaya/repos/3fd/3fd/utils",
   "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/cmdline.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/cmdline.cpp",
   "file": "/home/faburaya/repos/3fd/3fd/utils/cmdline.cpp"
 },
 {
   "directory": "/home/faburaya/repos/3fd/3fd/utils",
-  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/utils_asynchronous.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/utils_asynchronous.cpp",
-  "file": "/home/faburaya/repos/3fd/3fd/utils/utils_asynchronous.cpp"
+  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/dynmempool.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/dynmempool.cpp",
+  "file": "/home/faburaya/repos/3fd/3fd/utils/dynmempool.cpp"
 },
 {
   "directory": "/home/faburaya/repos/3fd/3fd/utils",
-  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/utils_dynmempool.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/utils_dynmempool.cpp",
-  "file": "/home/faburaya/repos/3fd/3fd/utils/utils_dynmempool.cpp"
+  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/event.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/event.cpp",
+  "file": "/home/faburaya/repos/3fd/3fd/utils/event.cpp"
 },
 {
   "directory": "/home/faburaya/repos/3fd/3fd/utils",
-  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/utils_event.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/utils_event.cpp",
-  "file": "/home/faburaya/repos/3fd/3fd/utils/utils_event.cpp"
+  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/memorypool.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/memorypool.cpp",
+  "file": "/home/faburaya/repos/3fd/3fd/utils/memorypool.cpp"
 },
 {
   "directory": "/home/faburaya/repos/3fd/3fd/utils",
-  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/utils_io.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/utils_io.cpp",
-  "file": "/home/faburaya/repos/3fd/3fd/utils/utils_io.cpp"
+  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/serialization.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/serialization.cpp",
+  "file": "/home/faburaya/repos/3fd/3fd/utils/serialization.cpp"
 },
 {
   "directory": "/home/faburaya/repos/3fd/3fd/utils",
-  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/utils_memorypool.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/utils_memorypool.cpp",
-  "file": "/home/faburaya/repos/3fd/3fd/utils/utils_memorypool.cpp"
-},
-{
-  "directory": "/home/faburaya/repos/3fd/3fd/utils",
-  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/utils_string.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/utils_string.cpp",
-  "file": "/home/faburaya/repos/3fd/3fd/utils/utils_string.cpp"
+  "command": "/usr/bin/c++  -DENABLE_3FD_CST -DENABLE_3FD_ERR_IMPL_DETAILS -I/home/faburaya/repos/3fd/3fd/utils -I/home/faburaya/repos/3fd/3fd/utils/../..   -std=c++17 -Wno-deprecated -g   -o CMakeFiles/3fd-utils.dir/text.cpp.o -c /home/faburaya/repos/3fd/3fd/utils/text.cpp",
+  "file": "/home/faburaya/repos/3fd/3fd/utils/text.cpp"
 },
 {
   "directory": "/home/faburaya/repos/3fd/3fd/utils",
