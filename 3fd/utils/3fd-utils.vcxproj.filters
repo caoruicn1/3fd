@@ -32,16 +32,16 @@
     <ClCompile Include="event.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="io.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="memorypool.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="sharedmutex.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="strings.cpp">
+    <ClCompile Include="text.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="serialization.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -61,7 +61,7 @@
     <ClInclude Include="concurrency.h">
       <Filter>Quelldateien</Filter>
     </ClInclude>
-    <ClInclude Include="io.h">
+    <ClInclude Include="serialization.h">
       <Filter>Quelldateien</Filter>
     </ClInclude>
     <ClInclude Include="lockfreequeue.h">
@@ -70,7 +70,7 @@
     <ClInclude Include="memory.h">
       <Filter>Quelldateien</Filter>
     </ClInclude>
-    <ClInclude Include="strings.h">
+    <ClInclude Include="text.h">
       <Filter>Quelldateien</Filter>
     </ClInclude>
   </ItemGroup>

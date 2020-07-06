@@ -226,11 +226,11 @@
   <ItemGroup>
     <ClInclude Include="algorithms.h" />
     <ClInclude Include="concurrency.h" />
-    <ClInclude Include="io.h" />
+    <ClInclude Include="serialization.h" />
     <ClInclude Include="lockfreequeue.h" />
     <ClInclude Include="memory.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="strings.h" />
+    <ClInclude Include="text.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="winrt.h" />
     <ClInclude Include="xml.h" />
@@ -239,7 +239,6 @@
     <ClCompile Include="asynchronous.cpp" />
     <ClCompile Include="dynmempool.cpp" />
     <ClCompile Include="event.cpp" />
-    <ClCompile Include="io.cpp" />
     <ClCompile Include="memorypool.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -251,8 +250,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="serialization.cpp" />
     <ClCompile Include="sharedmutex.cpp" />
-    <ClCompile Include="strings.cpp" />
+    <ClCompile Include="text.cpp" />
     <ClCompile Include="winrt.cpp" />
     <ClCompile Include="xml.cpp" />
   </ItemGroup>

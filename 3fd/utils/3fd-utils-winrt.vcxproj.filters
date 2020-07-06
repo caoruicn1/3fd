@@ -19,11 +19,11 @@
     <ClInclude Include="xml.h" />
     <ClInclude Include="algorithms.h" />
     <ClInclude Include="concurrency.h" />
-    <ClInclude Include="io.h" />
+    <ClInclude Include="serialization.h" />
     <ClInclude Include="lockfreequeue.h" />
     <ClInclude Include="memory.h" />
     <ClInclude Include="winrt.h" />
-    <ClInclude Include="strings.h" />
+    <ClInclude Include="text.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -33,10 +33,10 @@
     <ClCompile Include="asynchronous.cpp" />
     <ClCompile Include="dynmempool.cpp" />
     <ClCompile Include="event.cpp" />
-    <ClCompile Include="io.cpp" />
     <ClCompile Include="memorypool.cpp" />
     <ClCompile Include="sharedmutex.cpp" />
     <ClCompile Include="winrt.cpp" />
-    <ClCompile Include="strings.cpp" />
+    <ClCompile Include="text.cpp" />
+    <ClCompile Include="serialization.cpp" />
   </ItemGroup>
 </Project>
