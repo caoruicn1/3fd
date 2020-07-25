@@ -71,7 +71,7 @@
     </Lib>
     <PostBuildEvent>
       <Command>copy $(ProjectDir)\broker.h $(SolutionDir)\install\include\3fd\broker\
-copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+copy $(TargetDir)\*broker.* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
@@ -104,7 +104,7 @@ copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Co
     </Lib>
     <PostBuildEvent>
       <Command>copy $(ProjectDir)\broker.h $(SolutionDir)\install\include\3fd\broker\
-copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+copy $(TargetDir)\*broker.* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>

@@ -68,7 +68,7 @@
     </Link>
     <PostBuildEvent>
       <Command>copy $(ProjectDir)\sqlite.h $(SolutionDir)\install\include\3fd\sqlite\
-copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+copy $(TargetDir)\*sqlite.* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -94,7 +94,7 @@ copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Co
     </Link>
     <PostBuildEvent>
       <Command>copy $(ProjectDir)\sqlite.h $(SolutionDir)\install\include\3fd\sqlite\
-copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+copy $(TargetDir)\*sqlite.* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

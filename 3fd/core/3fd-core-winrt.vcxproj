@@ -111,7 +111,7 @@
       <AdditionalDependencies>runtimeobject.lib;</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+      <Command>copy $(TargetDir)\*core-winrt* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
@@ -133,7 +133,7 @@
       <AdditionalDependencies>runtimeobject.lib;</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+      <Command>copy $(TargetDir)\*core-winrt* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -155,7 +155,7 @@
       <AdditionalDependencies>runtimeobject.lib;</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+      <Command>copy $(TargetDir)\*core-winrt* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -177,7 +177,7 @@
       <AdditionalDependencies>runtimeobject.lib;</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+      <Command>copy $(TargetDir)\*core-winrt* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

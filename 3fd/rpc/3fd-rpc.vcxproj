@@ -71,7 +71,7 @@
     </Lib>
     <PostBuildEvent>
       <Command>copy $(ProjectDir)\rpc_helpers.h $(SolutionDir)\install\include\3fd\rpc\
-copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+copy $(TargetDir)\*rpc.* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -100,7 +100,7 @@ copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Co
     </Lib>
     <PostBuildEvent>
       <Command>copy $(ProjectDir)\rpc_helpers.h $(SolutionDir)\install\include\3fd\rpc\
-copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+copy $(TargetDir)\*rpc.* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

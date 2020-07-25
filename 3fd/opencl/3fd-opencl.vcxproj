@@ -69,7 +69,7 @@
     <PostBuildEvent>
       <Command>copy $(ProjectDir)\opencl.h $(SolutionDir)\install\include\3fd\opencl\
 copy $(ProjectDir)\CL\*.h $(SolutionDir)\install\include\3fd\opencl\CL\
-copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+copy $(TargetDir)\*opencl.* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -96,7 +96,7 @@ copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Co
     <PostBuildEvent>
       <Command>copy $(ProjectDir)\opencl.h $(SolutionDir)\install\include\3fd\opencl\
 copy $(ProjectDir)\CL\*.h $(SolutionDir)\install\include\3fd\opencl\CL\
-copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+copy $(TargetDir)\*opencl.* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

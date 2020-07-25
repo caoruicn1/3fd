@@ -73,7 +73,7 @@
       <Command>copy $(ProjectDir)\utils.h $(SolutionDir)\install\include\3fd\wws\
 copy $(ProjectDir)\webservicehost.h $(SolutionDir)\install\include\3fd\wws\
 copy $(ProjectDir)\webserviceproxy.h $(SolutionDir)\install\include\3fd\wws\
-copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+copy $(TargetDir)\*wws.* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -104,7 +104,7 @@ copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Co
       <Command>copy $(ProjectDir)\utils.h $(SolutionDir)\install\include\3fd\wws\
 copy $(ProjectDir)\webservicehost.h $(SolutionDir)\install\include\3fd\wws\
 copy $(ProjectDir)\webserviceproxy.h $(SolutionDir)\install\include\3fd\wws\
-copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+copy $(TargetDir)\*wws.* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
