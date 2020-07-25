@@ -70,7 +70,8 @@
       <AdditionalDependencies>Rpcrt4.lib;Ntdsapi.lib;Secur32.lib;Crypt32.lib;</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\rpc_helpers.h $(SolutionDir)\install\include\3fd\rpc\</Command>
+      <Command>copy $(ProjectDir)\rpc_helpers.h $(SolutionDir)\install\include\3fd\rpc\
+copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -98,7 +99,8 @@
       <AdditionalDependencies>Rpcrt4.lib;Ntdsapi.lib;Secur32.lib;Crypt32.lib;</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\rpc_helpers.h $(SolutionDir)\install\include\3fd\rpc\</Command>
+      <Command>copy $(ProjectDir)\rpc_helpers.h $(SolutionDir)\install\include\3fd\rpc\
+copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -105,7 +105,8 @@ copy $(ProjectDir)\lockfreequeue.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\memory.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\string.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\winrt.h $(SolutionDir)\install\include\3fd\utils\
-copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\</Command>
+copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\
+copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,9 +141,10 @@ copy $(ProjectDir)\concurrency.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\serialization.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\lockfreequeue.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\memory.h $(SolutionDir)\install\include\3fd\utils\
-copy $(ProjectDir)\text.h $(SolutionDir)\install\include\3fd\utils\
+copy $(ProjectDir)\string.h $(SolutionDir)\install\include\3fd\utils\
 copy $(ProjectDir)\winrt.h $(SolutionDir)\install\include\3fd\utils\
-copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\</Command>
+copy $(ProjectDir)\xml.h $(SolutionDir)\install\include\3fd\utils\
+copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

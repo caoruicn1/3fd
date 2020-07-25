@@ -70,8 +70,13 @@
       <AdditionalDependencies>IPHLPAPI.lib</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\broker.h $(SolutionDir)\install\include\3fd\broker\</Command>
+      <Command>copy $(ProjectDir)\broker.h $(SolutionDir)\install\include\3fd\broker\
+copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -98,8 +103,13 @@
       <AdditionalDependencies>IPHLPAPI.lib</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)\broker.h $(SolutionDir)\install\include\3fd\broker\</Command>
+      <Command>copy $(ProjectDir)\broker.h $(SolutionDir)\install\include\3fd\broker\
+copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="broker.h" />

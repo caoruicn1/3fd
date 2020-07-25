@@ -110,6 +110,9 @@
     <Lib>
       <AdditionalDependencies>esent.lib;</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
     <ClCompile>
@@ -129,6 +132,9 @@
     <Lib>
       <AdditionalDependencies>esent.lib;</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -148,6 +154,9 @@
     <Lib>
       <AdditionalDependencies>esent.lib;</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -167,6 +176,9 @@
     <Lib>
       <AdditionalDependencies>esent.lib;</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="isam.h" />

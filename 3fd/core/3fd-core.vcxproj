@@ -90,7 +90,8 @@ copy $(ProjectDir)\logger.h $(SolutionDir)\install\include\3fd\core\
 copy $(ProjectDir)\preprocessing.h $(SolutionDir)\install\include\3fd\core\
 copy $(ProjectDir)\runtime.h $(SolutionDir)\install\include\3fd\core\
 copy $(ProjectDir)\sptr.h $(SolutionDir)\install\include\3fd\core\
-copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\template.3fd.config</Command>
+copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\template.3fd.config
+copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -135,7 +136,8 @@ copy $(ProjectDir)\logger.h $(SolutionDir)\install\include\3fd\core\
 copy $(ProjectDir)\preprocessing.h $(SolutionDir)\install\include\3fd\core\
 copy $(ProjectDir)\runtime.h $(SolutionDir)\install\include\3fd\core\
 copy $(ProjectDir)\sptr.h $(SolutionDir)\install\include\3fd\core\
-copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\template.3fd.config</Command>
+copy $(ProjectDir)\3fd-config-template.xml $(SolutionDir)\install\include\3fd\template.3fd.config
+copy $(TargetDir)\* $(SolutionDir)\install\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
